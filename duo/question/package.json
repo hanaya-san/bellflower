@@ -1,0 +1,30 @@
+{
+  "name": "question-tool",
+  "version": "1.0.0",
+  "description": "問題を自動作成するツール",
+  "main": "build/index.js",
+  "scripts": {
+    "clean": "del-cli build",
+    "clean:test": "del-cli test/build",
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "build:test": "tsc -p test",
+    "test": "npm run clean:test && npm run build && npm run build:test && nyc ava --serial \"test/build/**/*Spec.js\" && nyc report --reporter=html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hanaya-san/bellflower.git"
+  },
+  "bin": {
+    "md-cli": "build/cli/index.js"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Hanaya-san",
+    "email": "46750194+hanaya-san@users.noreply.github.com"
+  },
+  "license": "ISC",
+  "files": [
+    "build"
+  ]
+}
