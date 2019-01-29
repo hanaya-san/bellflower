@@ -9,9 +9,8 @@
     "build": "tsc",
     "build:test": "tsc -p test",
     "test": "npm run clean:test && npm run build && npm run build:test && nyc ava --serial \"test/build/**/*Spec.js\" && nyc report --reporter=html",
-    "start": "node build/index.js",
-    "debug": "node inspect build/start.js",
-    "restart": "npm run clean && npm run build && npm run start"
+    "debug": "node inspect build/index.js",
+    "start": "npm run clean && npm run build && node build/index.js"
   },
   "repository": {
     "type": "git",
