@@ -6,6 +6,9 @@
   "scripts": {
     "clean": "del-cli build",
     "clean:test": "del-cli test/build",
+    "lint": "tslint 'src/**/*.ts'",
+    "lint:lib": "tslint --project tsconfig.json -c ./tslint.json \"src/**/*.ts\"",
+    "lint:test": "tslint --project test/tsconfig.json -c ./tslint.json \"test/**/*.ts\"",
     "build": "tsc",
     "build:test": "tsc -p test",
     "test": "npm run clean:test && npm run build && npm run build:test && nyc ava --serial \"test/build/**/*Spec.js\" && nyc report --reporter=html",
@@ -29,6 +32,7 @@
     "build"
   ],
   "dependencies": {
-    "@types/node": "^10.12.19"
+    "@types/node": "^10.12.19",
+    "tslint-config-airbnb": "^5.11.1"
   }
 }

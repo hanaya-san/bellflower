@@ -1,0 +1,60 @@
+{
+  "extends": ["tslint-config-airbnb"],
+  "rules": {
+    "no-unused-expression": true,
+    "no-trailing-whitespace": true,
+    "no-increment-decrement": false,
+    "no-floating-promises": true,
+    "no-string-throw": true,
+    "no-boolean-literal-compare": false,
+    "no-multi-spaces": true,
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-catch",
+      "check-else",
+      "check-whitespace"
+    ],
+    "ban-comma-operator": true,
+    "prefer-readonly":true,
+    "member-access": true,
+    "max-line-length": [true, 180],
+    "radix": false,
+    "indent": [true, "tabs"],
+    "ter-indent": [
+      true,
+      "tab",
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "quotemark": [true, "double"],
+    "ter-arrow-parens": [true, "as-needed"],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type",
+      "check-preblock"
+    ],
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      },
+      {
+        "call-signature": "onespace",
+        "index-signature": "onespace",
+        "parameter": "onespace",
+        "property-declaration": "onespace",
+        "variable-declaration": "onespace"
+      }
+    ]
+  }
+}
