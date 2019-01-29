@@ -6,10 +6,12 @@
   "scripts": {
     "clean": "del-cli build",
     "clean:test": "del-cli test/build",
-    "prebuild": "npm run clean",
     "build": "tsc",
     "build:test": "tsc -p test",
-    "test": "npm run clean:test && npm run build && npm run build:test && nyc ava --serial \"test/build/**/*Spec.js\" && nyc report --reporter=html"
+    "test": "npm run clean:test && npm run build && npm run build:test && nyc ava --serial \"test/build/**/*Spec.js\" && nyc report --reporter=html",
+    "start": "node build/index.js",
+    "debug": "node inspect build/start.js",
+    "restart": "npm run clean && npm run build && npm run start"
   },
   "repository": {
     "type": "git",
@@ -26,5 +28,8 @@
   "license": "ISC",
   "files": [
     "build"
-  ]
+  ],
+  "dependencies": {
+    "@types/node": "^10.12.19"
+  }
 }
