@@ -16,7 +16,7 @@ from bs4 import BeautifulSoup
 
 # ===== Def =====
 # 出力情報を定義(適宜変更お願いします)
-OUTPUT_DIR = '../output/'
+OUTPUT_DIR = '../data/output/raw/'
 FILE_NAME = 'duo_3-0'
 
 # アクセスするURLを定義
@@ -36,6 +36,7 @@ soup = BeautifulSoup(html.text, 'html.parser')
 # htmlから英文と和文の部分を抽出してデータフレームに格納する
 navi_str_en_list = soup.find_all("span", class_="TermText notranslate lang-en")
 navi_str_ja_list = soup.find_all("span", class_="TermText notranslate lang-ja")
+sentence_df['id'] = range(1, len(navi_str_en_list)+1)
 sentence_df['en'] = [str(navi_str_en_list[i].string) for i in range(len(navi_str_en_list))]
 sentence_df['ja'] = [str(navi_str_ja_list[i].string) for i in range(len(navi_str_ja_list))]
 
