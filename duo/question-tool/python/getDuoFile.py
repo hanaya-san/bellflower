@@ -49,7 +49,7 @@ for i in range(len(sentence_df.index)):
         f.write('\n%d\n%s\n%s\n'%(i+1, sentence_df['en'][i], sentence_df['ja'][i]))
 print('Output: %s%s.txt'%(OUTPUT_DIR, FILE_NAME))
 
-sentence_df.to_csv('%s%s.csv'%(OUTPUT_DIR, FILE_NAME))
+sentence_df.to_csv('%s%s.csv'%(OUTPUT_DIR, FILE_NAME), index=False)
 print('Output: %s%s.csv'%(OUTPUT_DIR, FILE_NAME))
 
 sys.exit(0)
