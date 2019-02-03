@@ -1,0 +1,8 @@
+# <__MASTER_FILE_NAME__> の小テスト
+
+- 実施日: <__RUN_DATE__>
+- 出題範囲: <__ST_IDX__>~<__EN_IDX__>のうち<__ITM_CNT__>問出題
+
+## 問題
+
+__EXAM__
