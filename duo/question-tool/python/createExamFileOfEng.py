@@ -39,13 +39,15 @@ IN_TMP_FILE_NAME = 'mdFileTemplete'
 
 # 現在時刻(日本時間)を取得
 dt_now_ja = datetime.now(pytz.timezone('Asia/Tokyo')).strftime('%Y/%m/%d')
+print('[INF] Running datetime: %s'%(dt_now_ja))
 
 # 例文リストをロードしてデータフレームに格納
 sentence_df = pd.read_csv('%s%s.csv'%(INPUT_CSV_DIR, IN_CSV_FILE_NAME))
+print('[INF] Input: %s%s.csv'%(INPUT_CSV_DIR, IN_CSV_FILE_NAME))
 
 # 読み込んだデータフレームのid最大値を取得
 id_range_max = sentence_df['id'][-1:].values[0]
-print('id_max: %d'%(id_range_max))
+print('[INF] id_max: %d'%(id_range_max))
 # 入力エラー処理
 if (ST_IDX > id_range_max) | (EN_IDX > id_range_max) | (ITEMS_CNT > id_range_max):
   print('[ERR] Set a value larger than raw_file_count')
@@ -62,6 +64,7 @@ if (EN_IDX-ST_IDX) < ITEMS_CNT-1:
 # 出力ファイルテンプレートを読み込み
 with open('%s%s.txt'%(INPUT_TMP_DIR, IN_TMP_FILE_NAME), mode='r', encoding='utf-8') as f:
   raw = f.read()
+print('[INF] Input: %s%s.txt'%(INPUT_TMP_DIR, IN_TMP_FILE_NAME))
 
 # 解答データフレームを作成
 answer_df = pd.DataFrame()
@@ -88,10 +91,10 @@ a_txt = tmp_txt.replace('__EXAM__', tabulate(answer_df, tablefmt='pipe', headers
 
 with open('%squestion.md'%(OUTPUT_DIR), mode='w', encoding='utf-8') as f:
   f.write(q_txt)
-print('[INF] Output %squestion.md'%(OUTPUT_DIR))
+print('[INF] Output: %squestion.md'%(OUTPUT_DIR))
 
 with open('%sanswer.md'%(OUTPUT_DIR), mode='w', encoding='utf-8') as f:
   f.write(a_txt)
-print('[INF] Output %sanswer.md'%(OUTPUT_DIR))
+print('[INF] Output: %sanswer.md'%(OUTPUT_DIR))
 
 sys.exit(0)
