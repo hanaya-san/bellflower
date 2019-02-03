@@ -45,7 +45,7 @@ sentence_df = pd.read_csv('%s%s.csv'%(INPUT_CSV_DIR, IN_CSV_FILE_NAME))
 
 # 読み込んだデータフレームのid最大値を取得
 id_range_max = sentence_df['id'][-1:].values[0]
-print(id_range_max)
+print('id_max: %d'%(id_range_max))
 # 入力エラー処理
 if (ST_IDX > id_range_max) | (EN_IDX > id_range_max) | (ITEMS_CNT > id_range_max):
   print('[ERR] Set a value larger than raw_file_count')
@@ -78,13 +78,13 @@ question_df['回答'] = ' '
 
 # テキスト(markdown記法)を成形
 tmp_txt = raw
-tmp_txt = tmp_txt.replace('__MASTER_FILE_NAME__', 'duo')
+tmp_txt = tmp_txt.replace('__MASTER_FILE_NAME__', 'duo 3.0')
 tmp_txt = tmp_txt.replace('__RUN_DATE__', dt_now_ja)
 tmp_txt = tmp_txt.replace('__ST_IDX__', str(ST_IDX))
 tmp_txt = tmp_txt.replace('__EN_IDX__', str(EN_IDX))
 tmp_txt = tmp_txt.replace('__ITM_CNT__', str(ITEMS_CNT))
-q_txt = tmp_txt.replace('__EXAM__', tabulate(question_df, tablefmt='markdown', headers='keys', showindex=False))
-a_txt = tmp_txt.replace('__EXAM__', tabulate(answer_df, tablefmt='markdown', headers='keys', showindex=False))
+q_txt = tmp_txt.replace('__EXAM__', tabulate(question_df, tablefmt='pipe', headers='keys', showindex=False))
+a_txt = tmp_txt.replace('__EXAM__', tabulate(answer_df, tablefmt='pipe', headers='keys', showindex=False))
 
 with open('%squestion.md'%(OUTPUT_DIR), mode='w', encoding='utf-8') as f:
   f.write(q_txt)

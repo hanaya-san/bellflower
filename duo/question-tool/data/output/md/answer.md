@@ -1,19 +1,19 @@
-# <duo> の小テスト
+# duo 3.0 の小テスト
 
 - 実施日: <2019/02/04>
 - 出題範囲: <1>~<20>のうち<10>問出題
 
 ## 問題
 
-  No  問題                                                                  回答
-----  --------------------------------------------------------------------  ---------------------------------------------------------------------------------
-   1  個人の意志は尊重しなければいけない。                                  We must respect the will of the individual.
-   2  気楽にいけよ。大丈夫、すべてうまくいくさ。                            Take it easy. I can assure you that everything will turn out fine.
-   3  悲観的な人生観を捨てて、前向きな態度を常に持ち続けよう。              Let go of your negative outlook on life. Always maintain a positive attitude.
-   4  生まれた国、性別、信条に関係なく、誰に対しても公平でなくてはならない  You should be fair to everyone regardless of national origin, gender, or creed.
-   9  「汗でびしょぬれだよ。」「来ないで！くさいわ。シャワーを浴びて。」    I'm soaked with sweat. "Stand back! You stink. Take a shower."
-  10  ボブはひどく取り乱していて、現実と虚構の区別がほとんどできなかった。  Bob was so beside himself that he could scarcely tell fact from fiction.
-  13  山田さんがその心ひかれるおとぎ話をやさしい日本語に翻訳 した。         Ms. Yamada translated the fascinating fairy tale into plain Japanese.
-  14  以下の一説は有名な寓話からの引用です。                                The following passage is quoted from a well-known fable.
-  15  「現代文学に詳しいですが？」 「ほとんど知りません。」                 Are you familiar with contemporary literature? "I know next to nothing about it."
-  17  恥ずかしがらないで。あなたの発音はだいたい合っています。              Don't be shy. Your pronunciation is more or less correct.
+|   No | 問題                                                                                                     | 回答                                                                                       |
+|-----:|:---------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------|
+|    1 | 個人の意志は尊重しなければいけない。                                                                     | We must respect the will of the individual.                                                |
+|    4 | 生まれた国、性別、信条に関係なく、誰に対しても公平でなくてはならない                                     | You should be fair to everyone regardless of national origin, gender, or creed.            |
+|    5 | 平等は憲法で守られている。                                                                               | Equality is guaranteed by the Constitution.                                                |
+|    9 | 「汗でびしょぬれだよ。」「来ないで！くさいわ。シャワーを浴びて。」                                       | I'm soaked with sweat. "Stand back! You stink. Take a shower."                             |
+|   11 | まもなく出版になる彼の小説は、散文に彼の詩の才能を融合させたものだ。                                     | His new nobel, which combines prose with his gift for poetry, is going to be published.    |
+|   12 | 来月、その百科事典の最新版が出る。                                                                       | An up-to-date edition of the encyclopedia will come out next month.                        |
+|   15 | 「現代文学に詳しいですが？」 「ほとんど知りません。」                                                    | Are you familiar with contemporary literature? "I know next to nothing about it."          |
+|   16 | 時々、""curve""と""carve""を混同してしまう                                                               | At times I confuse "curve" with "carve."                                                   |
+|   19 | 彼の最新の作品が市庁舎で展示されているの｡言葉にできないほど紫敵よ。                                      | His latest works are on display at the city hall. They are fabulous beyond description.    |
+|   20 | 「少し詰めていただけませんか？」「あ、ごめんなさい。こんなに 場所を取っていたなんて気付きませんでした｡」 | Could you move over a little? "Oh, sorry. I didn't realize I was taking up so much space." |
