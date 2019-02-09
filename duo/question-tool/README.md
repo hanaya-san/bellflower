@@ -15,24 +15,28 @@
 ---
 
 # Dependency
-
-- TODO: この項目は必要に応じて編集してくれ(いらなかったら項目ごと削除してくれ)
-- にいさんにおまかせ
-- 一般的に..
-    - 使用言語とバージョン、必要なライブラリとそのバージョンを書く
-    - Pythonならrequirements.txtを用意するのも良い
-    - とのこと
+- 環境
+    - 言語
+        - Python 3.6.5 :: Anaconda, Inc.
+        - anaconda Command line client (version 1.6.14)
 
 ---
 
 # Setup
 
-- 必要なライブラリをインストールする
+## 必要なライブラリをインストールする
+```
+# conf/requirements.txt : 一括インストール用設定ファイル
+$ pip install -r ${requirements.txtのパス}
+```
 
-```
-pip install Requests
-pip install beautifulsoup4
-```
+## モジュールのバージョン一覧
+    - numpy==1.14.3
+    - pandas==0.23.0
+    - requests==2.18.4
+    - pytz==2018.4
+    - tabulate==0.8.3
+    - beautifulsoup4==4.6.0
 
 - 任意でzshrcなどにエイリアスを追加
 
@@ -74,5 +78,5 @@ alias question='bash ~/hanaya-san/bellflower/duo/question-tool/bin/question.sh'
 
 # References
 
-- [Duo3\.0のテキスト加工 \- b2fireb4beatのブログ](http://b2fireb4beat.hatenablog.com/entry/2017/07/25/163740)
+[Duo 3.0 復習用まとめ Section 1-45](https://quizlet.com/5792378/duo-30-%E5%BE%A9%E7%BF%92%E7%94%A8%E3%81%BE%E3%81%A8%E3%82%81-section-1-45-flash-cards/)
 
