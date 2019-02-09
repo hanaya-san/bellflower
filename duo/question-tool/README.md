@@ -16,9 +16,8 @@
 
 # Dependency
 - 環境
-    - 言語
-        - Python 3.6.5 :: Anaconda, Inc.
-        - anaconda Command line client (version 1.6.14)
+    - Python 3.6.5 :: Anaconda, Inc.
+    - anaconda Command line client (version 1.6.14)
 
 ---
 
