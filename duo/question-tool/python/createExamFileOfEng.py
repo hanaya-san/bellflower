@@ -1,16 +1,3 @@
-'''
-例文リスト(duo_3-0.csv)を読み込んで、指定した範囲で問題文テキスト(.md)、解答テキスト(.md)を出力する。
-
-・入力するcsvファイルは以下フォーマットであること。
- - id, en, ja 3つのカラムが存在する。
- - id列が連番である。
-
-・引数
- - arg1: 出題範囲開始No.
- - arg2: 出題範囲終了No.
- - arg3: 問題数
-'''
-
 import sys
 import numpy as np
 import pandas as pd

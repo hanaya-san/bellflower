@@ -3,10 +3,6 @@ Quizletの以下頁にある例文(英-和)をスクレイピングして、csv�
 https://quizlet.com/39180682/duo-30-%E5%BE%A9%E7%BF%92%E7%94%A8%E5%85%A8%E4%BE%8B%E6%96%87-%E8%8B%B1%E5%92%8C-flash-cards/
 '''
 
-# 初回は以下コマンドでライブラリをインストールする
-#pip install Requests
-#pip install beautifulsoup4
-
 import os
 import sys
 import numpy as np

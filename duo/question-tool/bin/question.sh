@@ -1,10 +1,4 @@
 #!/bin/bash
-#
-# DUO小テスト作成用のpythonスクリプトをパイプライン化
-
-
-# alias question='bash ~/hanaya-san/bellflower/duo/question-tool/bin/question.sh' 等でエイリアス追加しておいて下さい
-
 
 if [ $# -ne 3 ]; then
   echo "Wrong number of arguments." 1>&2
