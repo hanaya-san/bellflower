@@ -1,0 +1,7 @@
+beautifulsoup4==4.7.1
+numpy==1.16.1
+pandas==0.24.1
+pytz==2018.9
+requests==2.21.0
+tabulate==0.8.3
+
