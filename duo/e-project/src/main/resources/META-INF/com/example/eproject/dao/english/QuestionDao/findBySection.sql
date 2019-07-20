@@ -1,5 +1,5 @@
 select
-e.id as id, e.japanese as japanese
+e.id as id, e.japanese as japaneseText
 from
 english e
   join

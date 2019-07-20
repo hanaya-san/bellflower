@@ -7,10 +7,19 @@ import org.seasar.doma.Id;
 
 @Data
 @Entity
+@Builder
 public class AnswerEntity {
 
     @Id
     private Integer id;
 
-    private String english;
+    private String englishText;
+
+    public AnswerEntity() {
+    }
+
+    public AnswerEntity(Integer id, String englishText) {
+        this.id = id;
+        this.englishText = englishText;
+    }
 }

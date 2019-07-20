@@ -10,5 +10,5 @@ public class QuestionEntity {
     @Id
     private Integer id;
 
-    private String japanese;
+    private String japaneseText;
 }

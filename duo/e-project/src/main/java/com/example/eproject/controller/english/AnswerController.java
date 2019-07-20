@@ -1,9 +1,7 @@
 package com.example.eproject.controller.english;
 
-import com.example.eproject.dao.english.AnswerDao;
 import com.example.eproject.entity.english.AnswerEntity;
 import com.example.eproject.form.english.AnswerForm;
-import com.example.eproject.model.english.Answer;
 import com.example.eproject.response.english.AnswerResponse;
 import com.example.eproject.service.english.AnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,22 +22,33 @@ public class AnswerController {
 
         String correctentence = "正解";
 
-        List<Answer> correctAnswerList = answerService.findBySection(section);
+        List<AnswerEntity> answerObjList = answerService.findBySection(section);
 
-        List<String> userAnswerList = answerForm.getResponseAnswers();
+        List<Integer> idList = answerObjList.stream()
+                .map(_answer -> _answer.getId())
+                .collect(Collectors.toList());
 
-        Integer totalScore = (int)correctAnswerList.stream().count();
+        List<String> correctAnswerList = answerObjList.stream()
+                .map(_answer -> _answer.getEnglishText().replaceAll(" ", ""))
+                .collect(Collectors.toList());
 
-        List<Answer> answer = IntStream.range(0, correctAnswerList.size()).mapToObj(i ->
-                        !correctAnswerList.get(i).getEnglish().replaceAll(" ","").equals(userAnswerList.get(i).replaceAll(" ","")) ?
-                                correctAnswerList.get(i) : Answer.builder().id(correctAnswerList.get(i).getId()).english(correctentence).build()).collect(Collectors.toList());
+        List<String> userAnswerList = answerForm.getResponseAnswers().stream()
+                .map(_answer -> _answer.replaceAll(" ",""))
+                .collect(Collectors.toList());
 
-        Integer score = (int)answer.stream().map(a -> a.getEnglish()).filter(e -> e.equals(correctentence)).count();
+        Integer totalScore = (int)idList.stream().count();
 
-        return AnswerResponse.builder().
-                score(score).
-                totalScore(totalScore).
-                answerList(answer).
-                build();
+        List<AnswerEntity> answerList = IntStream.range(0, correctAnswerList.size()).mapToObj(_index ->
+                !correctAnswerList.get(_index).equals(userAnswerList.get(_index)) ?
+                        answerObjList.get(_index) : AnswerEntity.builder().id(idList.get(_index)).englishText(correctentence).build())
+                .collect(Collectors.toList());
+
+        Integer score = (int)answerList.stream().map(a -> a.getEnglishText()).filter(e -> e.equals(correctentence)).count();
+
+        return AnswerResponse.builder()
+                .score(score)
+                .totalScore(totalScore)
+                .answerList(answerList)
+                .build();
     }
 }
