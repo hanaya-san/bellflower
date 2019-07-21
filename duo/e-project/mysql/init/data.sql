@@ -7,7 +7,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
- SET NAMES utf8mb4 ;
+SET NAMES utf8mb4 ;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,25 +21,18 @@
 
 DROP TABLE IF EXISTS `authorize_local`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+SET character_set_client = utf8mb4 ;
 CREATE TABLE `authorize_local` (
-  `authorize_local_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `login_id` varchar(225) COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(223) COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`authorize_local_id`)
+`authorize_local_id` int(11) NOT NULL AUTO_INCREMENT,
+`users_id` int(11) NOT NULL,
+`login_id` varchar(225) COLLATE utf8mb4_general_ci NOT NULL,
+`password` varchar(223) COLLATE utf8mb4_general_ci NOT NULL,
+`create_at` timestamp  default current_timestamp,
+`update_at` timestamp default current_timestamp on update current_timestamp,
+foreign key (`users_id`) references users(users_id),
+PRIMARY KEY (`authorize_local_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `authorize_local`
---
-
-LOCK TABLES `authorize_local` WRITE;
-/*!40000 ALTER TABLE `authorize_local` DISABLE KEYS */;
-INSERT INTO `authorize_local` VALUES (1,2,'test01','$2a$10$r1HkP9c9GvROj1AxiE/r7ObpwGrdrzt7U8vT.LdIT8jZhpJuaS4hm'),(2,3,'test02','$2a$10$ppezIqHShGtaXBtcl5KFUugTZ2FgLl8mNLacCvAmeD7zo/nS8ltKO'),(3,4,'test03','$2a$10$C3ZvQeX3vzoR5NJwYumQ4OzOJ55Y1OSAHDkhLOHatPusiTYo5e0XW'),(4,5,'test04','$2a$10$lDWTiB.q/0PYyuLGndicCOYGGtsc3CfaDkh2UxNj2OKSINlLF6A8a'),(5,6,'kendoyasui','700ce79efffb5a9b5ab834f4aab5a310f7a23511a0280e45504a13bed38e321c'),(6,7,'gast','84dbaeb4740bd1c4542268f5e50d0fa4'),(7,8,'yasui01','54c17d45710e47468a38abf35e3e41ab');
-/*!40000 ALTER TABLE `authorize_local` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `english`
@@ -47,12 +40,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `english`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+SET character_set_client = utf8mb4 ;
 CREATE TABLE `english` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `english` text COLLATE utf8mb4_general_ci NOT NULL,
-  `japanese` text COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id`)
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`english` text COLLATE utf8mb4_general_ci NOT NULL,
+`japanese` text COLLATE utf8mb4_general_ci NOT NULL,
+PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=561 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -72,15 +65,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `range_history`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+SET character_set_client = utf8mb4 ;
 CREATE TABLE `range_history` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `test_history_id` int(11) NOT NULL,
-  `start_question` int(11) NOT NULL,
-  `last_question` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`test_history_id` int(11) NOT NULL,
+`start_question` int(11) NOT NULL,
+`last_question` int(11) NOT NULL,
+`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+`updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -99,10 +92,10 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `sample`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+SET character_set_client = utf8mb4 ;
 CREATE TABLE `sample` (
-  `id` int(11) DEFAULT NULL,
-  `name` text COLLATE utf8mb4_general_ci
+`id` int(11) DEFAULT NULL,
+`name` text COLLATE utf8mb4_general_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -122,12 +115,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `section`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+SET character_set_client = utf8mb4 ;
 CREATE TABLE `section` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `section_num` int(11) NOT NULL,
-  `english_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`section_num` int(11) NOT NULL,
+`english_id` int(11) NOT NULL,
+PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=561 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -147,14 +140,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `section_history`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+SET character_set_client = utf8mb4 ;
 CREATE TABLE `section_history` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `test_history_id` int(11) NOT NULL,
-  `section` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`test_history_id` int(11) NOT NULL,
+`section` int(11) NOT NULL,
+`created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+`updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -174,15 +167,15 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `test_history`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+SET character_set_client = utf8mb4 ;
 CREATE TABLE `test_history` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `score` int(11) NOT NULL,
-  `total_score` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`user_id` int(11) NOT NULL,
+`score` int(11) NOT NULL,
+`total_score` int(11) NOT NULL,
+`created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+`updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -202,13 +195,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `testrange`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+SET character_set_client = utf8mb4 ;
 CREATE TABLE `testrange` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `start` int(11) NOT NULL,
-  `last` int(11) NOT NULL,
-  `date` timestamp NOT NULL,
-  PRIMARY KEY (`id`)
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`start` int(11) NOT NULL,
+`last` int(11) NOT NULL,
+`date` timestamp NOT NULL,
+PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -226,33 +219,14 @@ UNLOCK TABLES;
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(223) COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`user_id`)
+SET character_set_client = utf8mb4 ;
+CREATE TABLE `users` (
+`users_id` int(11) NOT NULL AUTO_INCREMENT,
+`user_name` varchar(223) COLLATE utf8mb4_general_ci NOT NULL,
+`create_at` timestamp  default current_timestamp,
+`update_at` timestamp default current_timestamp on update current_timestamp,
+PRIMARY KEY (`users_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user`
---
-
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'test01'),(2,'test01'),(3,'test02'),(4,'test03'),(5,'test04'),(6,'安居健道'),(7,'テスト'),(8,'安居');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2019-07-19 23:56:35
