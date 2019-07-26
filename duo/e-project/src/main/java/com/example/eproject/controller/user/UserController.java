@@ -1,6 +1,6 @@
 package com.example.eproject.controller.user;
 
-import com.example.eproject.entity.user.UserEntity;
+import com.example.eproject.entity.user.User;
 import com.example.eproject.form.user.LoginForm;
 import com.example.eproject.form.user.RegistForm;
 import com.example.eproject.response.user.UserResponse;
@@ -27,14 +27,14 @@ public class UserController {
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public UserResponse userLogin(@RequestBody LoginForm loginForm){
-        UserEntity userEntity = userService.findUser(loginForm);
+        User user = userService.findUser(loginForm);
         String userToken = TokenUtil.getCsrfToken();
 
-        redisTemplate.opsForHash().putAll(userToken, userEntity.getMap());
+        redisTemplate.opsForHash().putAll(userToken, user.getMap());
 
         return UserResponse.builder()
-                .users_id(userEntity.getUsers_id())
-                .user_name(userEntity.getUser_name())
+                .users_id(user.getUsers_id())
+                .user_name(user.getUser_name())
                 .userToken(userToken)
                 .build();
     }

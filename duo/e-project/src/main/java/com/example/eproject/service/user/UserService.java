@@ -1,58 +1,62 @@
 package com.example.eproject.service.user;
 
+import com.example.eproject.dao.user.AuthorizeDao;
 import com.example.eproject.dao.user.UserDao;
-import com.example.eproject.entity.user.InsertAuthorizeEntity;
-import com.example.eproject.entity.user.InsertUserEntity;
-import com.example.eproject.entity.user.UserEntity;
+import com.example.eproject.entity.user.Authorize;
+import com.example.eproject.entity.user.User;
 import com.example.eproject.form.user.LoginForm;
 import com.example.eproject.form.user.RegistForm;
 import com.example.eproject.util.PasswordUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.HttpClientErrorException;
 
 @Service
 public class UserService {
 
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private AuthorizeDao authorizeDao;
 
     @Transactional
     public void insertUserInfo(RegistForm registForm){
-        InsertUserEntity insertUserEntity = InsertUserEntity.builder()
+        User user = User.builder()
+                .users_id(null)
                 .user_name(registForm.getUserName())
                 .build();
 
-        userDao.insertUser(insertUserEntity);
+        userDao.insertUser(user);
 
         String loginId = registForm.getLoginId();
         String password = registForm.getPassword();
         String safetyPassword = PasswordUtil.getSafetyPassword(password , loginId);
 
-        InsertAuthorizeEntity insertAuthorizeEntity = InsertAuthorizeEntity.builder()
+        Authorize authorize = Authorize.builder()
+                .authorize_local_id(null)
+                .users_id(user.getUsers_id())
                 .login_id(loginId)
                 .password(safetyPassword)
                 .build();
 
-        userDao.insertAuthorize(insertAuthorizeEntity);
+        authorizeDao.insertAuthorizaLocal(authorize);
     }
 
-    public UserEntity findUser(LoginForm loginForm){
+    public User findUser(LoginForm loginForm){
         String loginId = loginForm.getLoginId();
         String password = loginForm.getPassword();
         String safetyPassword = PasswordUtil.getSafetyPassword(password , loginId);
 
-        UserEntity userEntity = userDao.findByLoginId(loginId);
-
-        if (userEntity == null){
-            System.out.println("ユーザーが見つかりません");
+        Authorize authorize = authorizeDao.findAuthorize(loginId ,safetyPassword);
+        if(authorize == null) {
+            System.out.println("loginIdまたはパスワードが違います");
             throw new NullPointerException();
-        }else if(!userEntity.getPassword().equals(safetyPassword)){
-            System.out.println("登録されたパスワードと一致しません");
-            throw new NullPointerException();
-        }else {
-            return userEntity;
         }
+        User user = userDao.findByUserId(authorize.getUsers_id());
+        if (user == null){
+            System.out.println("loginIdまたはパスワードが違います");
+            throw new NullPointerException();
+        }
+        return user;
     }
 }
