@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3301/duo
+    url: jdbc:mysql://127.0.0.1:3301/duo?useSSL=false
     username: root
     password: root
     driverClassName: com.mysql.jdbc.Driver
@@ -9,3 +9,7 @@ spring:
     port: 6301
     password: null
     database: 0
+
+doma:
+  dialect: mysql
+  sql-file-repository: no_cache

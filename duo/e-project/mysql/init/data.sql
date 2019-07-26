@@ -15,9 +15,14 @@ SET NAMES utf8mb4 ;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Table structure for table `authorize_local`
---
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+create table users(
+`users_id` int(11) not null AUTO_INCREMENT primary key,
+`user_name` varchar(225) COLLATE utf8mb4_general_ci not null ,
+`create_at` timestamp  default current_timestamp,
+`update_at` timestamp default current_timestamp on update current_timestamp
+);
 
 DROP TABLE IF EXISTS `authorize_local`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -31,7 +36,18 @@ CREATE TABLE `authorize_local` (
 `update_at` timestamp default current_timestamp on update current_timestamp,
 foreign key (`users_id`) references users(users_id),
 PRIMARY KEY (`authorize_local_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
+
+
+DROP TABLE IF EXISTS `english`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+SET character_set_client = utf8mb4 ;
+CREATE TABLE `english` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`english` text COLLATE utf8mb4_general_ci NOT NULL,
+`japanese` text COLLATE utf8mb4_general_ci NOT NULL,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=561 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -59,55 +75,6 @@ INSERT INTO `english` VALUES (1,'We must respect the will of the individual.','å
 /*!40000 ALTER TABLE `english` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `range_history`
---
-
-DROP TABLE IF EXISTS `range_history`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-SET character_set_client = utf8mb4 ;
-CREATE TABLE `range_history` (
-`id` int(11) NOT NULL AUTO_INCREMENT,
-`test_history_id` int(11) NOT NULL,
-`start_question` int(11) NOT NULL,
-`last_question` int(11) NOT NULL,
-`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-`updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `range_history`
---
-
-LOCK TABLES `range_history` WRITE;
-/*!40000 ALTER TABLE `range_history` DISABLE KEYS */;
-/*!40000 ALTER TABLE `range_history` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sample`
---
-
-DROP TABLE IF EXISTS `sample`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-SET character_set_client = utf8mb4 ;
-CREATE TABLE `sample` (
-`id` int(11) DEFAULT NULL,
-`name` text COLLATE utf8mb4_general_ci
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sample`
---
-
-LOCK TABLES `sample` WRITE;
-/*!40000 ALTER TABLE `sample` DISABLE KEYS */;
-INSERT INTO `sample` VALUES (1,'ysdui'),(2,'kendo');
-/*!40000 ALTER TABLE `sample` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `section`
@@ -134,99 +101,13 @@ INSERT INTO `section` VALUES (1,1,1),(2,1,2),(3,1,3),(4,1,4),(5,1,5),(6,1,6),(7,
 /*!40000 ALTER TABLE `section` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `section_history`
---
-
-DROP TABLE IF EXISTS `section_history`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-SET character_set_client = utf8mb4 ;
-CREATE TABLE `section_history` (
-`id` int(11) NOT NULL AUTO_INCREMENT,
-`test_history_id` int(11) NOT NULL,
-`section` int(11) NOT NULL,
-`created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-`updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `section_history`
---
-
-LOCK TABLES `section_history` WRITE;
-/*!40000 ALTER TABLE `section_history` DISABLE KEYS */;
-INSERT INTO `section_history` VALUES (1,8,1,'2019-07-05 17:18:16','2019-07-05 17:18:16'),(2,9,1,'2019-07-05 17:21:52','2019-07-05 17:21:52'),(3,10,1,'2019-07-05 17:22:17','2019-07-05 17:22:17'),(4,11,1,'2019-07-05 17:24:34','2019-07-05 17:24:34'),(5,12,1,'2019-07-05 17:26:09','2019-07-05 17:26:09'),(6,13,1,'2019-07-05 17:26:20','2019-07-05 17:26:20'),(7,14,1,'2019-07-05 17:27:28','2019-07-05 17:27:28');
-/*!40000 ALTER TABLE `section_history` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `test_history`
---
-
-DROP TABLE IF EXISTS `test_history`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-SET character_set_client = utf8mb4 ;
-CREATE TABLE `test_history` (
-`id` int(11) NOT NULL AUTO_INCREMENT,
-`user_id` int(11) NOT NULL,
-`score` int(11) NOT NULL,
-`total_score` int(11) NOT NULL,
-`created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-`updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `test_history`
---
-
-LOCK TABLES `test_history` WRITE;
-/*!40000 ALTER TABLE `test_history` DISABLE KEYS */;
-INSERT INTO `test_history` VALUES (1,1,0,11,NULL,NULL),(2,1,0,11,NULL,NULL),(3,1,0,11,NULL,NULL),(4,1,0,11,NULL,NULL),(5,1,0,11,NULL,NULL),(6,1,0,11,NULL,NULL),(8,1,0,11,'2019-07-05 17:18:16','2019-07-05 17:18:16'),(9,1,0,11,'2019-07-05 17:21:52','2019-07-05 17:21:52'),(10,1,1,11,'2019-07-05 17:22:17','2019-07-05 17:22:17'),(11,1,1,11,'2019-07-05 17:24:34','2019-07-05 17:24:34'),(12,1,0,11,'2019-07-05 17:26:09','2019-07-05 17:26:09'),(13,1,1,11,'2019-07-05 17:26:20','2019-07-05 17:26:20'),(14,1,1,11,'2019-07-05 17:27:28','2019-07-05 17:27:28');
-/*!40000 ALTER TABLE `test_history` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `testrange`
---
-
-DROP TABLE IF EXISTS `testrange`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-SET character_set_client = utf8mb4 ;
-CREATE TABLE `testrange` (
-`id` int(11) NOT NULL AUTO_INCREMENT,
-`start` int(11) NOT NULL,
-`last` int(11) NOT NULL,
-`date` timestamp NOT NULL,
-PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `testrange`
---
-
-LOCK TABLES `testrange` WRITE;
-/*!40000 ALTER TABLE `testrange` DISABLE KEYS */;
-INSERT INTO `testrange` VALUES (1,1,5,'0000-00-00 00:00:00'),(2,1,5,'0000-00-00 00:00:00'),(3,1,5,'2019-04-29 16:05:10'),(4,1,5,'2019-04-29 16:26:36'),(5,1,5,'2019-05-24 09:41:41');
-/*!40000 ALTER TABLE `testrange` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `user`
---
-
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-SET character_set_client = utf8mb4 ;
-CREATE TABLE `users` (
-`users_id` int(11) NOT NULL AUTO_INCREMENT,
-`user_name` varchar(223) COLLATE utf8mb4_general_ci NOT NULL,
+create table test_history(
+`test_history_id` int(11) not null auto_increment primary key,
+`users_id` int(11) not null ,
+`section` int(11) not null ,
+`score` int(11) not null ,
+`total_score` int(11) not null ,
 `create_at` timestamp  default current_timestamp,
 `update_at` timestamp default current_timestamp on update current_timestamp,
-PRIMARY KEY (`users_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+foreign key (`users_id`) references users(users_id)
+);
