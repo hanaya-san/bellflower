@@ -9,6 +9,7 @@ import com.example.eproject.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
 
 @RestController
 @CrossOrigin
@@ -25,7 +26,7 @@ public class UserController {
         userService.insertUserInfo(registForm);
     }
 
-    @RequestMapping(value = "login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public UserResponse userLogin(@RequestBody LoginForm loginForm){
         UserEntity userEntity = userService.findUser(loginForm);
         String userToken = TokenUtil.getCsrfToken();
