@@ -2,11 +2,11 @@ package com.example.eproject.service.english;
 
 import com.example.eproject.dao.english.QuestionDao;
 import com.example.eproject.entity.english.QuestionEntity;
+import com.example.eproject.response.english.QuestionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class QuedtionService {
@@ -14,7 +14,11 @@ public class QuedtionService {
     @Autowired
     private QuestionDao questionDao;
 
-    public List<QuestionEntity> findBySection(Integer section){
-        return questionDao.findBySection(section);
+    public QuestionResponse findBySection(Integer section){
+        List<QuestionEntity> questionList = questionDao.findBySection(section);
+
+        return QuestionResponse.builder()
+                .questionList(questionList)
+                .build();
     }
 }
