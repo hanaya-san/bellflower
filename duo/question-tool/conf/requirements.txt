@@ -1,5 +1,5 @@
 beautifulsoup4==4.7.1
-numpy==1.16.1
+numpy==1.22.0
 pandas==0.24.1
 pytz==2018.9
 requests==2.21.0
